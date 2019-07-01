@@ -42,15 +42,9 @@ export function HomePage({
     if (username && username.trim().length > 0) onSubmitForm();
   }, []);
 
-  const reposListProps = {
-    loading,
-    error,
-    repos,
-  };
-
   return (
     <article>
-      <div>This is</div>
+      <div>This is hompage component</div>
     </article>
   );
 }

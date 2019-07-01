@@ -27,6 +27,14 @@ import LanguageProvider from 'containers/LanguageProvider';
 import '!file-loader?name=[name].[ext]!./images/favicon.ico';
 import 'file-loader?name=.htaccess!./.htaccess'; // eslint-disable-line import/extensions
 
+// import blueprintjs/core
+import 'normalize.css';
+import '@blueprintjs/core/lib/css/blueprint.css';
+import '@blueprintjs/icons/lib/css/blueprint-icons.css';
+
+// Import bootstrap
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import configureStore from './configureStore';
 
 // Import i18n messages
