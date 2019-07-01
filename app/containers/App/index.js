@@ -6,16 +6,15 @@
  * contain code that should be seen on all pages. (e.g. navigation bar)
  */
 
-import React from 'react';
-import styled from 'styled-components';
-import { Switch, Route } from 'react-router-dom';
+import React from "react";
+import styled from "styled-components";
+import { Switch, Route } from "react-router-dom";
 
-import HomePage from 'containers/HomePage/Loadable';
-import FeaturePage from 'containers/FeaturePage/Loadable';
-import NotFoundPage from 'containers/NotFoundPage/Loadable';
-import Header from 'containers/Header/Loadable';
-
-import GlobalStyle from '../../global-styles';
+import FeaturePage from "containers/FeaturePage/Loadable";
+import NotFoundPage from "containers/NotFoundPage/Loadable";
+import Header from "containers/Header/Loadable";
+import indexRoutes from "../Routes/index";
+import GlobalStyle from "../../global-styles";
 
 const AppWrapper = styled.div`
   display: flex;
@@ -29,10 +28,21 @@ export default function App() {
     <AppWrapper>
       <Header />
       <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route path="/features" component={FeaturePage} />
-        <Route path="" component={NotFoundPage} />
+        {indexRoutes.map((props, key) => {
+          console.log("props: ", props);
+          return (
+            <Route
+              path={props.path}
+              component={props.component}
+              key={key}
+              exact={props.exact}
+            />
+          );
+        })}
+
+        <Route path=":/anything" component={NotFoundPage} />
       </Switch>
+
       <GlobalStyle />
     </AppWrapper>
   );

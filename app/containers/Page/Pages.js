@@ -1,15 +1,12 @@
-import React from 'react';
-import { Route, Switch } from 'react-router-dom';
-import HomePage from '../HomePage/Loadable';
+import React from "react";
+import { Route, Switch } from "react-router-dom";
+import HomePage from "../HomePage/Loadable";
+import { routes } from "../Routes/routeHelper";
 
-class Pages extends React.Component {
-    render() {
-        return(
-            <Switch>
+const Pages = () =>{
+  <Switch>
+    <Route path={routes.HOME} component={HomePage} />
+  </Switch>
+);
 
-                <Route path={}></Route>
-
-            </Switch>
-        )
-    }
-}
+export default Pages;

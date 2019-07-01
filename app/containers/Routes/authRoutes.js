@@ -1,4 +1,4 @@
-import AuthPage from '../Page/AuthPages';
+import AuthPage from '../AuthPages/Loadable';
 const authRoutes = [
   { path: '/auth/:authType', name: 'AuthPage', component: AuthPage },
 ];
