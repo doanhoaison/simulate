@@ -1,5 +1,5 @@
 import AuthPages from '../Page/AuthPages';
-import HomePage from '../HomePage/Loadable';
+import HomePage from '../Page/Pages';
 
 const indexRoutes = [
   { path: '/auth', name: 'Auth', component: AuthPages },

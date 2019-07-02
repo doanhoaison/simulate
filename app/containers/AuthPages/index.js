@@ -17,16 +17,38 @@ import makeSelectAuthPages from "./selectors";
 import reducer from "./reducer";
 import saga from "./saga";
 import messages from "./messages";
+import { LOGIN, REGISTER } from "./constants";
+import FormLogin from "./FormLogin";
+import FormRegister from "./FormRegister";
 
-export function AuthPages() {
-  useInjectReducer({ key: "authPages", reducer });
-  useInjectSaga({ key: "authPages", saga });
+import Wrapper from './styled/Wrapper';
 
-  return (
-    <div>
-      <FormattedMessage {...messages.header} />
-    </div>
-  );
+export class AuthPages extends React.Component {
+  // useInjectReducer({ key: "authPages", reducer });
+  // useInjectSaga({ key: "authPages", saga });
+
+  renderForm = () => {
+    const { authType } = this.props.match.params;
+    console.log('authType',authType );
+
+    switch (authType) {
+      case LOGIN:
+        return <FormLogin />;
+      case REGISTER:
+        return <FormRegister />;
+      default:
+        break;
+    }
+  };
+
+  render() {
+    console.log('authPages');
+    return (
+      <Wrapper>
+        {this.renderForm()}
+      </Wrapper>
+    );
+  }
 }
 
 AuthPages.propTypes = {

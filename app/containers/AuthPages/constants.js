@@ -4,4 +4,5 @@
  *
  */
 
-export const DEFAULT_ACTION = "app/AuthPages/DEFAULT_ACTION";
+export const REGISTER = "register";
+export const LOGIN = "log-in";

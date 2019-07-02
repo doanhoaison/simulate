@@ -20,16 +20,15 @@ const AppWrapper = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: lightgrey;
 `;
 
 export default function App() {
+
   return (
     <AppWrapper>
-      <Header />
       <Switch>
         {indexRoutes.map((props, key) => {
-          console.log("props: ", props);
+          console.log('app/App/index.js', props.component);
           return (
             <Route
               path={props.path}
