@@ -17,32 +17,32 @@ class FormRegister extends React.Component {
     return (
       <div>
         <Formik
-          initialStatus={this.state}
+          initialValues={this.state}
           validationSchema={validationSchema}
-          render={({values, handleChange, handleBlur, handleSubmit, errors}) => {
-            console.log("values: ", values);
+          onSubmit={(values) => console.log(values)}
+          render={({handleChange, handleBlur}) => {
             return (
               <Form>
                 <FormInputGroup
                   label="Phone"
-                  id="phone"
+                  name="phone"
                   placeholder="Enter your phone"
                   onChange={handleChange}
-                  onBlue={handleBlur}
+                  onBlur={handleBlur}
                   large
                 />
                 <FormInputGroup
                   label="Password"
-                  id="pass"
+                  name="pass"
                   placeholder="Enter your password"
                   type="password"
                   onChange={handleChange}
-                  onBlue={handleBlur}
+                  onBlur={handleBlur}
                   large
                 />
                 <FormInputGroup
                   label="Confirm password"
-                  id="confirmPass"
+                  name="confirmPass"
                   placeholder="Enter your confirm password"
                   type="password"
                   large

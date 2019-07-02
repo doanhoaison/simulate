@@ -6,14 +6,30 @@
 
 import React from "react";
 import { FormGroup, InputGroup } from "@blueprintjs/core";
-import { ErrorMessage } from 'formik';
+import FormErrorMessage from '../FormErrorMessage';
 
-function FormInputGroup({ label, id, placeholder, intent, type="text", ...rest }) {
+function FormInputGroup({
+  label,
+  name,
+  placeholder,
+  intent,
+  type = "text",
+  ...rest
+}) {
+  console.log("rest: ", rest);
   return (
-    <FormGroup label={label}>
-      <InputGroup id={id} placeholder={placeholder} intent={intent}  type={type} { ...rest}/>
-      <ErrorMessage name={id} />
-    </FormGroup>
+    <div>
+      <FormGroup label={label}>
+        <InputGroup
+          name={name}
+          placeholder={placeholder}
+          intent={intent}
+          type={type}
+          {...rest}
+        />
+      </FormGroup>
+      <FormErrorMessage name={name} />
+    </div>
   );
 }
 
