@@ -1,7 +1,7 @@
 import React from "react";
 import FormInputGroup from "../../../components/FormInputGroup";
 import { Formik, Form } from "formik";
-import { Button } from "@blueprintjs/core";
+import { Button, Intent } from "@blueprintjs/core";
 import validationSchema from "./validationSchema";
 
 class FormRegister extends React.Component {
@@ -15,7 +15,8 @@ class FormRegister extends React.Component {
   }
   render() {
     return (
-      <div>
+      <>
+        <h3>REGISTER</h3>
         <Formik
           initialValues={this.state}
           validationSchema={validationSchema}
@@ -48,12 +49,12 @@ class FormRegister extends React.Component {
                   large
                 />
 
-                <Button text="Register" type="submit" large />
+                <Button text="Register" type="submit" intent={Intent.PRIMARY} />
               </Form>
             );
           }}
         />
-      </div>
+        </>
     );
   }
 }

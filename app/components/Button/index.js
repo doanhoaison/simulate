@@ -7,16 +7,16 @@
 import React from "react";
 // import PropTypes from 'prop-types';
 // import styled from 'styled-components';
-import { Button } from "@blueprintjs/core";
+import StyledButton from './StyledButton';
 
 function CommonButton({ text, ...rest }) {
   return (
     <React.Fragment>
-      <Button text={text} {...rest} />
+      <StyledButton text={text} {...rest} />
     </React.Fragment>
   );
 }
 
-Button.propTypes = {};
+// Button.propTypes = {};
 
 export default CommonButton;

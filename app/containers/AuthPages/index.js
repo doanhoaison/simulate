@@ -24,12 +24,16 @@ import FormRegister from "./FormRegister";
 import Wrapper from './styled/Wrapper';
 
 export class AuthPages extends React.Component {
-  // useInjectReducer({ key: "authPages", reducer });
-  // useInjectSaga({ key: "authPages", saga });
+    constructor(props) {
+      super(props);
+      this.state ={
+
+      }
+    }
+
 
   renderForm = () => {
     const { authType } = this.props.match.params;
-    console.log('authType',authType );
 
     switch (authType) {
       case LOGIN:
@@ -42,10 +46,11 @@ export class AuthPages extends React.Component {
   };
 
   render() {
-    console.log('authPages');
     return (
       <Wrapper>
+        <div className="form__content form">
         {this.renderForm()}
+        </div>
       </Wrapper>
     );
   }

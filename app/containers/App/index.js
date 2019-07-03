@@ -28,7 +28,6 @@ export default function App() {
     <AppWrapper>
       <Switch>
         {indexRoutes.map((props, key) => {
-          console.log('app/App/index.js', props.component);
           return (
             <Route
               path={props.path}

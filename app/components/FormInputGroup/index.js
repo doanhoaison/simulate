@@ -16,7 +16,6 @@ function FormInputGroup({
   type = "text",
   ...rest
 }) {
-  console.log("rest: ", rest);
   return (
     <div>
       <FormGroup label={label}>
