@@ -9,65 +9,100 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { FormattedMessage } from "react-intl";
 import { createStructuredSelector } from "reselect";
-import { compose } from "redux";
-
+import { compose, bindActionCreators } from "redux";
 import { useInjectSaga } from "utils/injectSaga";
 import { useInjectReducer } from "utils/injectReducer";
 import makeSelectAuthPages from "./selectors";
 import reducer from "./reducer";
 import saga from "./saga";
 import messages from "./messages";
-import { LOGIN, REGISTER } from "./constants";
+
 import FormLogin from "./FormLogin";
 import FormRegister from "./FormRegister";
 
-import Wrapper from './styled/Wrapper';
+import {
+  SUBMIT,
+  SUBMIT_ERROR,
+  INITIAL_DATA_REGISTER,
+  LOGIN,
+  REGISTER,
+  KEY_APP
+} from "./constants";
+import { eUserType } from "../enums/EUserType";
+import { submit } from "./actions";
 
-export class AuthPages extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state ={
+import Wrapper from "./styled/Wrapper";
+import { Toaster, Intent } from "@blueprintjs/core";
 
-      }
-    }
+export function AuthPages(props) {
+  useInjectReducer({ key: KEY_APP, reducer });
+  useInjectSaga({ key: KEY_APP, saga });
 
+  const handleSubmitRegister = dtoObj => {
+    props.onSubmit(
+      dtoObj,
+      REGISTER,
+      callbackError,
+      callbackSuccess
+    );
+  };
 
-  renderForm = () => {
-    const { authType } = this.props.match.params;
+  const handleSubmitLogin = (dtoObj) => {
+    props.onSubmit(
+      dtoObj,
+      LOGIN,
+      callbackError,
+      callbackSuccess,
+    )
+  }
+
+  const callbackError = (errorObj) => {
+    Toaster.show({
+      message: "error",
+      intent: Intent.DANGER
+    });
+  };
+
+  const callbackSuccess = messObj => {
+    Toaster.show({
+      message: "Success",
+      intent: Intent.SUCCESS
+    });
+  };
+
+  const renderForm = () => {
+    const { authType } = props.match.params;
 
     switch (authType) {
       case LOGIN:
-        return <FormLogin />;
+        return <FormLogin onSubmit={handleSubmitLogin}/>;
       case REGISTER:
-        return <FormRegister />;
+        return <FormRegister onSubmit={handleSubmitRegister} />;
       default:
         break;
     }
   };
 
-  render() {
-    return (
-      <Wrapper>
-        <div className="form__content form">
-        {this.renderForm()}
-        </div>
-      </Wrapper>
-    );
-  }
+  return (
+    <Wrapper>
+      <div className="form__content form">{renderForm()}</div>
+    </Wrapper>
+  );
 }
 
-AuthPages.propTypes = {
-  dispatch: PropTypes.func.isRequired
-};
+AuthPages.propTypes = {};
 
 const mapStateToProps = createStructuredSelector({
   authPages: makeSelectAuthPages()
 });
 
 function mapDispatchToProps(dispatch) {
-  return {
+  return bindActionCreators(
+    {
+      onSubmit: submit
+    },
     dispatch
-  };
+  );
 }
 
 const withConnect = connect(
@@ -75,4 +110,6 @@ const withConnect = connect(
   mapDispatchToProps
 );
 
-export default compose(withConnect)(AuthPages);
+export default compose(
+  withConnect
+)(AuthPages);

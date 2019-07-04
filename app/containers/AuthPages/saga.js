@@ -1,6 +1,18 @@
-// import { take, call, put, select } from 'redux-saga/effects';
+import { take, call, put, select, takeLatest, fork } from 'redux-saga/effects';
+import { SUBMIT } from './constants';
 
 // Individual exports for testing
+
+
+export function* submitForm(action ) {
+  try {
+    console.log('action', action);
+  } catch (error) {
+    console.log('error', error);
+  }
+
+}
 export default function* authPagesSaga() {
-  // See example in containers/HomePage/saga.js
+  yield takeLatest(SUBMIT, submitForm);
+
 }

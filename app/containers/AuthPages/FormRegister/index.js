@@ -1,26 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import FormInputGroup from "../../../components/FormInputGroup";
 import { Formik, Form } from "formik";
 import { Button, Intent } from "@blueprintjs/core";
 import validationSchema from "./validationSchema";
 
-class FormRegister extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      phone: "",
-      pass: "",
-      confirmPass: ""
-    };
+function FormRegister (props) {
+
+  const [ objUser, setUser ]  = useState({phone: '', pass: '', confirmPass: ''});
+
+  const handleSubmit = (values) => {
+    props.onSubmit(values);
   }
-  render() {
+
     return (
       <>
         <h3>REGISTER</h3>
         <Formik
-          initialValues={this.state}
+          initialValues={objUser}
           validationSchema={validationSchema}
-          onSubmit={(values) => console.log(values)}
+          onSubmit={handleSubmit}
           render={({handleChange, handleBlur}) => {
             return (
               <Form>
@@ -46,6 +44,8 @@ class FormRegister extends React.Component {
                   name="confirmPass"
                   placeholder="Enter your confirm password"
                   type="password"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
                   large
                 />
 
@@ -56,6 +56,5 @@ class FormRegister extends React.Component {
         />
         </>
     );
-  }
 }
 export default FormRegister;

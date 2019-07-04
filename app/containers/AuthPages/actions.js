@@ -4,10 +4,15 @@
  *
  */
 
-import { DEFAULT_ACTION } from "./constants";
+import { SUBMIT } from "./constants";
 
-export function defaultAction() {
+export function submit(data, formType, callbackError, callbackSuccess) {
+  console.log('get action');
   return {
-    type: DEFAULT_ACTION
+    type: SUBMIT,
+    data,
+    formType,
+    callbackError,
+    callbackSuccess
   };
 }
