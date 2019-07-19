@@ -10,5 +10,5 @@ export const INIT_DATA_REGISTER = 'app/containers/AuthPages/INIT_DATA_REGISTER'
 
 
 export const KEY_APP = 'authPage';
-export const REGISTER = "register";
-export const LOGIN = "log-in";
+export const FORM_TYPE_REGISTER = "register";
+export const FORM_TYPE_LOGIN = "log-in";

@@ -7,7 +7,6 @@ import { routes } from "../Routes/routeHelper";
 import StyledPage from './styled/StyledPage';
 
 const Pages = () => {
-  console.log("Page/Pages.js");
   return (
     <StyledPage>
       <Header />

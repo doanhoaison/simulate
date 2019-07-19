@@ -24,8 +24,8 @@ import {
   SUBMIT,
   SUBMIT_ERROR,
   INITIAL_DATA_REGISTER,
-  LOGIN,
-  REGISTER,
+  FORM_TYPE_LOGIN,
+  FORM_TYPE_REGISTER,
   KEY_APP
 } from "./constants";
 import { eUserType } from "../enums/EUserType";
@@ -41,7 +41,7 @@ export function AuthPages(props) {
   const handleSubmitRegister = dtoObj => {
     props.onSubmit(
       dtoObj,
-      REGISTER,
+      FORM_TYPE_REGISTER,
       callbackError,
       callbackSuccess
     );
@@ -50,7 +50,7 @@ export function AuthPages(props) {
   const handleSubmitLogin = (dtoObj) => {
     props.onSubmit(
       dtoObj,
-      LOGIN,
+      FORM_TYPE_LOGIN,
       callbackError,
       callbackSuccess,
     )
@@ -74,9 +74,9 @@ export function AuthPages(props) {
     const { authType } = props.match.params;
 
     switch (authType) {
-      case LOGIN:
+      case FORM_TYPE_LOGIN:
         return <FormLogin onSubmit={handleSubmitLogin}/>;
-      case REGISTER:
+      case FORM_TYPE_REGISTER:
         return <FormRegister onSubmit={handleSubmitRegister} />;
       default:
         break;

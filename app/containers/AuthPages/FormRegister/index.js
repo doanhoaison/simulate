@@ -9,6 +9,7 @@ function FormRegister (props) {
   const [ objUser, setUser ]  = useState({phone: '', pass: '', confirmPass: ''});
 
   const handleSubmit = (values) => {
+    console.log('handleSubmit', values);
     props.onSubmit(values);
   }
 

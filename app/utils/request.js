@@ -1,3 +1,5 @@
+import cloneDeep from "lodash/cloneDeep";
+
 /**
  * Parses the JSON returned by a network request
  *
@@ -20,6 +22,7 @@ function parseJSON(response) {
  * @return {object|undefined} Returns either the response, or throws an error
  */
 function checkStatus(response) {
+  console.log("response", response);
   if (response.status >= 200 && response.status < 300) {
     return response;
   }
@@ -37,8 +40,27 @@ function checkStatus(response) {
  *
  * @return {object}           The response data
  */
-export default function request(url, options) {
-  return fetch(url, options)
+export default function request(url, options = {}) {
+  const reqOptions = cloneDeep(options);
+
+  if (!options.headers) {
+    reqOptions.headers = Object.assign(
+      {},
+      {
+        'Content-Type': 'application/json',
+      }
+    );
+  } else if (options.headers["Content-Type"] === "multipart/form-data") {
+    reqOptions.headers["Content-Type"] = undefined;
+  } else {
+    reqOptions.headers = Object.assign({}, options.headers);
+  }
+
+      reqOptions.body = JSON.stringify(options.body)
+  console.log('JSON.stringtify(option): ', reqOptions);
+
+
+  return fetch(url, reqOptions)
     .then(checkStatus)
     .then(parseJSON);
 }
