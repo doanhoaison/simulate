@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import { Route, Switch } from "react-router-dom";
 import HomePage from "../HomePage/Loadable";
 import Header from "../Header";
+import ConnectedHeader from "../ConnectedHeader";
 import { routes } from "../Routes/routeHelper";
 
 import StyledPage from './styled/StyledPage';

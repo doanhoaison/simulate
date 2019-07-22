@@ -32,7 +32,8 @@ import { eUserType } from "../enums/EUserType";
 import { submit } from "./actions";
 
 import Wrapper from "./styled/Wrapper";
-import { Toaster, Intent } from "@blueprintjs/core";
+import { Intent } from "@blueprintjs/core";
+import Toaster from '../../components/Toaster';
 
 export function AuthPages(props) {
   useInjectReducer({ key: KEY_APP, reducer });
@@ -57,15 +58,16 @@ export function AuthPages(props) {
   }
 
   const callbackError = (errorObj) => {
+
     Toaster.show({
-      message: "error",
+      message: errorObj.message,
       intent: Intent.DANGER
     });
   };
 
   const callbackSuccess = messObj => {
     Toaster.show({
-      message: "Success",
+      message: messObj.message,
       intent: Intent.SUCCESS
     });
   };

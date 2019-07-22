@@ -4,12 +4,12 @@ import { Formik, Form } from "formik";
 import { Button, Intent } from "@blueprintjs/core";
 import validationSchema from "./validationSchema";
 
+
 function FormRegister (props) {
 
   const [ objUser, setUser ]  = useState({phone: '', pass: '', confirmPass: ''});
 
   const handleSubmit = (values) => {
-    console.log('handleSubmit', values);
     props.onSubmit(values);
   }
 
@@ -51,6 +51,7 @@ function FormRegister (props) {
                 />
 
                 <Button text="Register" type="submit" intent={Intent.PRIMARY} />
+
               </Form>
             );
           }}

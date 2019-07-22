@@ -2,13 +2,14 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 import authRoutes from "../Routes/authRoutes";
 import Header from "../Header/Loadable";
-import StyledAuthPage from './styled/StyledAuthPage'
+import StyledAuthPage from './styled/StyledAuthPage';
+import ConnectedHeader from "../ConnectedHeader";
 
 class AuthPages extends React.Component {
   render() {
     return (
       <StyledAuthPage>
-        <Header />
+        <ConnectedHeader />
         <Switch>
           {authRoutes.map((props, key) => {
             return (

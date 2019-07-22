@@ -5,7 +5,6 @@ import validationSchema from "./validationSchema";
 import Button from "../../../components/Button";
 
 function FormLogin(props) {
-
   const [ objUser, setUser] = useState({phone: '', pass: ''});
 
   const handleSubmit = values => {

@@ -18,9 +18,11 @@ import reducer from "./reducer";
 import saga from "./saga";
 import StyledHeader from "./styled/StyledHeader";
 
-export function Header() {
+export function Header(props) {
   useInjectReducer({ key: "header", reducer });
   useInjectSaga({ key: "header", saga });
+
+  console.log("props", props);
 
   return (
     <StyledHeader>
