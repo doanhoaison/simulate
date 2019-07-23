@@ -20,6 +20,7 @@ export function* submitForm(action) {
         action.callbackSuccess(response);
 
         yield all([call(auth.setUserInfo, response.data)]);
+        yield put(setUserInfo(response.data));
         yield call(forwardTo, "/");
         break;
 

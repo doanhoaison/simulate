@@ -42,7 +42,4 @@ const withConnect = connect(
 
 // export default compose(withConnect)(WrapperAuth);
 
-let test = compose(withConnect)(WrapperAuth);
-console.log('test: ', test);
-console.log('typeof test', typeof(test));
 export default WrapperAuth;

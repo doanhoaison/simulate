@@ -21,6 +21,7 @@ const auth = {
         return auth.get(userInfo);
     },
     setUserInfo(value = '', isLocalStorage=true, userInfo=USER_INFO) {
+        console.log('set UserInfor called');
         return auth.set(value, userInfo, isLocalStorage);
     }
 }

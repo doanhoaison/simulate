@@ -22,8 +22,6 @@ export function Header(props) {
   useInjectReducer({ key: "header", reducer });
   useInjectSaga({ key: "header", saga });
 
-  console.log("props", props);
-
   return (
     <StyledHeader>
       <Navbar>
