@@ -1,25 +1,49 @@
+/**
+ * The global state selectors
+ */
+
 import { createSelector } from 'reselect';
 import { initialState } from './reducer';
 
-/**
- * Direct selector to the page state domain
- */
+const selectGlobal = state => state.global || initialState;
 
-const selectPageDomain = state => state.page || initialState;
+const selectRouter = state => state.router;
 
-/**
- * Other specific selectors
- */
-
-/**
- * Default selector used by Page
- */
-
-const makeSelectPage = () =>
+const makeSelectCurrentUser = () =>
   createSelector(
-    selectPageDomain,
-    substate => substate,
+    selectGlobal,
+    globalState => globalState.currentUser,
   );
 
-export default makeSelectPage;
-export { selectPageDomain };
+const makeSelectLoading = () =>
+  createSelector(
+    selectGlobal,
+    globalState => globalState.loading,
+  );
+
+const makeSelectError = () =>
+  createSelector(
+    selectGlobal,
+    globalState => globalState.error,
+  );
+
+const makeSelectRepos = () =>
+  createSelector(
+    selectGlobal,
+    globalState => globalState.userData.repositories,
+  );
+
+const makeSelectLocation = () =>
+  createSelector(
+    selectRouter,
+    routerState => routerState.location,
+  );
+
+export {
+  selectGlobal,
+  makeSelectCurrentUser,
+  makeSelectLoading,
+  makeSelectError,
+  makeSelectRepos,
+  makeSelectLocation,
+};

@@ -13,12 +13,12 @@ import { compose } from "redux";
 import auth from '../../utils/auth';
 
 
-export default function WrapperAuth(WrappedComponent) {
+const WrapperAuth = (WrappedComponent) => (props) => {
   const userInfo = auth.getUserInfo();
   console.log(userInfo);
 
   return (
-    <WrappedComponent userInfo={userInfo} />
+    <WrappedComponent userInfo={userInfo} {...props} />
   );
 }
 
@@ -26,18 +26,23 @@ WrapperAuth.propTypes = {
   dispatch: PropTypes.func.isRequired
 };
 
-// const mapStateToProps = createStructuredSelector({
-// });
+const mapStateToProps = createStructuredSelector({
+});
 
-// function mapDispatchToProps(dispatch) {
-//   return {
-//     dispatch
-//   };
-// }
+function mapDispatchToProps(dispatch) {
+  return {
+    dispatch
+  };
+}
 
-// const withConnect = connect(
-//   mapStateToProps,
-//   mapDispatchToProps
-// );
+const withConnect = connect(
+  mapStateToProps,
+  mapDispatchToProps
+);
 
 // export default compose(withConnect)(WrapperAuth);
+
+let test = compose(withConnect)(WrapperAuth);
+console.log('test: ', test);
+console.log('typeof test', typeof(test));
+export default WrapperAuth;

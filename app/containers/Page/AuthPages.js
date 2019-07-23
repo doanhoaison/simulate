@@ -12,6 +12,7 @@ class AuthPages extends React.Component {
         <ConnectedHeader />
         <Switch>
           {authRoutes.map((props, key) => {
+            console.log('props', props);
             return (
               <Route
                 path={props.path}
