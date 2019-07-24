@@ -17,10 +17,12 @@ import makeSelectHeader from "./selectors";
 import reducer from "./reducer";
 import saga from "./saga";
 import StyledHeader from "./styled/StyledHeader";
+import AuthButton from './AuthButton';
 
 export function Header(props) {
-  useInjectReducer({ key: "header", reducer });
-  useInjectSaga({ key: "header", saga });
+  // useInjectReducer({ key: "header", reducer });
+  // useInjectSaga({ key: "header", saga });
+  console.log(" header props: ", props);
 
   return (
     <StyledHeader>
@@ -34,12 +36,7 @@ export function Header(props) {
         </Navbar.Group>
 
         <Navbar.Group align={Alignment.RIGHT}>
-          <Link to="/auth/register">
-            <Button className="bp3-minimal" text="Register" />
-          </Link>
-          <Link to="/auth/log-in">
-            <Button className="bp3-minimal" text="Log-in" />
-          </Link>
+          <AuthButton />
         </Navbar.Group>
       </Navbar>
     </StyledHeader>

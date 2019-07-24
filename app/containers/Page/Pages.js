@@ -10,7 +10,7 @@ import StyledPage from './styled/StyledPage';
 const Pages = () => {
   return (
     <StyledPage>
-      <Header />
+      <ConnectedHeader />
       <Switch>
         <Route exact path={routes.HOME} component={HomePage} />
       </Switch>

@@ -7,7 +7,6 @@ export function* setUserInfo(action){
   try {
 
     yield put(auth.setUserInfo, action.data);
-
   } catch (error) {
     console.log('error');
   }

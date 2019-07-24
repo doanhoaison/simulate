@@ -9,4 +9,5 @@
  * export const YOUR_ACTION_CONSTANT = 'yourproject/YourContainer/YOUR_ACTION_CONSTANT';
  */
 
+export const KEY_APP = 'global';
 export const SET_USER_INFO = 'app/containers/Page/SET_USER_INFO';

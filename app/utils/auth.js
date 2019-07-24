@@ -2,10 +2,11 @@ import isEmpty from 'lodash/isEmpty';
 const USER_INFO = 'user_info';
 
 const auth = {
-    get(key) {
+     get(key) {
         if(localStorage && localStorage.getItem(key)) {
             return JSON.parse(localStorage.getItem(key)) || null;
         }
+        return null;
     },
     set(value, key, isLocalStorage=true) {
         if(isEmpty(value)) {
@@ -16,12 +17,10 @@ const auth = {
         }
     },
     getUserInfo(userInfo=USER_INFO) {
-        console.log('getUserInfo');
-
         return auth.get(userInfo);
+        return data;
     },
     setUserInfo(value = '', isLocalStorage=true, userInfo=USER_INFO) {
-        console.log('set UserInfor called');
         return auth.set(value, userInfo, isLocalStorage);
     }
 }

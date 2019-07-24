@@ -8,17 +8,25 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
-import { compose } from "redux";
+import { compose, bindActionCreators } from "redux";
 
 import auth from '../../utils/auth';
-
+import { makeSelectUserInfo } from '../Page/selectors';
+import { setUserInfo } from '../Page/actions';
 
 const WrapperAuth = (WrappedComponent) => (props) => {
-  const userInfo = auth.getUserInfo();
-  console.log(userInfo);
+  useEffect(() => {
+    const userInfo = auth.getUserInfo();
+
+    if(userInfo) {
+      props.setUserInfo(userInfo);
+    }
+  }, []);
+
+
 
   return (
-    <WrappedComponent userInfo={userInfo} {...props} />
+    <WrappedComponent {...props} />
   );
 }
 
@@ -27,19 +35,22 @@ WrapperAuth.propTypes = {
 };
 
 const mapStateToProps = createStructuredSelector({
+  userInfo: makeSelectUserInfo(),
 });
 
-function mapDispatchToProps(dispatch) {
-  return {
-    dispatch
-  };
-}
+const mapDispatchToProps = dispatch => bindActionCreators({
+  setUserInfo
+}, dispatch)
 
 const withConnect = connect(
   mapStateToProps,
   mapDispatchToProps
 );
 
-// export default compose(withConnect)(WrapperAuth);
+const AuthProvider = compose(
+  withConnect,
+  WrapperAuth,
+)
 
-export default WrapperAuth;
+export default AuthProvider;
+
