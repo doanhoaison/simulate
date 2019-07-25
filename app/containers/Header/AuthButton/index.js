@@ -1,15 +1,25 @@
 import React from "react";
-import { Button, Menu, MenuItem, Icon } from "@blueprintjs/core";
+import { Button, Menu, MenuItem, Icon, Popover } from "@blueprintjs/core";
 import { Link } from "react-router-dom";
+
+const listMenu = [{ icon: "user", text: "User profile" }];
+
+const Content = (props) => (
+  <Menu>
+    {listMenu.map(item => (
+      <MenuItem text={item.text} icon={item.icon} />
+    ))}
+    <MenuItem text={"log-out"} icon={"log-out"} onClick={props.onLogout} />
+  </Menu>
+);
 
 function AuthButton(props) {
   const { userInfo } = props;
-
   if (userInfo) {
     return (
-      <Menu>
-        <MenuItem icon="user" />
-      </Menu>
+      <Popover content={<Content onLogout={props.onLogout} />}>
+        <Button icon={"user"} minimal />
+      </Popover>
     );
   }
   return (

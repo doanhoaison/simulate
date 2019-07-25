@@ -16,12 +16,21 @@ const auth = {
             return localStorage.setItem(key, JSON.stringify(value));
         }
     },
+    clear(key) {
+        if(localStorage && localStorage.getItem(key)) {
+            return localStorage.removeItem(key);
+        }
+        return null;
+    },
     getUserInfo(userInfo=USER_INFO) {
         return auth.get(userInfo);
-        return data;
     },
     setUserInfo(value = '', isLocalStorage=true, userInfo=USER_INFO) {
         return auth.set(value, userInfo, isLocalStorage);
+    },
+    clearUserInfo(userInfo=USER_INFO) {
+        console.log('clear User infoe');
+        return auth.clear(userInfo);
     }
 }
 export default auth;

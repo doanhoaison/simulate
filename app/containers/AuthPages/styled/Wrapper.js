@@ -1,19 +1,21 @@
 import styled from 'styled-components';
 
 export default styled.div`
-    margin: 30px;
-    margin-top: 20px;
+    margin: 5px;
     display: flex;
     justify-content: center;
-    background-color: #a9a7a77a;
     padding-top: 40px;
+    min-height: 100vh;
     .form {
         &__content {
             h3 {
                 text-align: center;
             }
-            width: 500px;
-            padding-bottom:100px;
+            width: 700px;
+            background: #a5dab5;
+            margin: auto;
+            padding: 100px;
+            box-shadow: 1px 1px 3px rgba(0,0,0,0.4);
 
             form {
                 display: flex;

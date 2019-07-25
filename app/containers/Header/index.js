@@ -36,7 +36,7 @@ export function Header(props) {
         </Navbar.Group>
 
         <Navbar.Group align={Alignment.RIGHT}>
-          <AuthButton />
+          <AuthButton userInfo={props.userInfo}  onLogout={props.onLogout}/>
         </Navbar.Group>
       </Navbar>
     </StyledHeader>

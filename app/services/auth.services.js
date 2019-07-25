@@ -1,5 +1,8 @@
 import { FORM_TYPE_REGISTER, FORM_TYPE_LOGIN } from '../containers/AuthPages/constants';
 import request from '../utils/request';
+import auth from '../utils/auth';
+import history from  '../utils/history';
+import { routes } from '../containers/Routes/routeHelper';
 
 import env from '../env';
 
@@ -17,4 +20,9 @@ export function submitFormAuthPage(formType, body) {
     }
 
     return request(requestURL, { method: 'POST', body });
+}
+
+export function Logout(route=routes.HOME) {
+    auth.clearUserInfo();
+    history.push(route)
 }

@@ -7,25 +7,18 @@
  */
 
 import React from "react";
-import styled from "styled-components";
 import { Switch, Route } from "react-router-dom";
 
 import FeaturePage from "containers/FeaturePage/Loadable";
 import NotFoundPage from "containers/NotFoundPage/Loadable";
-import Header from "containers/Header/Loadable";
 import indexRoutes from "../Routes/index";
 import GlobalStyle from "../../global-styles";
-
-const AppWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-`;
 
 export default function App() {
 
   return (
-    <AppWrapper>
+    <div className={'bg-white'}>
+      <div className={'d-flex flex-column'}>
       <Switch>
         {indexRoutes.map((props, key) => {
           return (
@@ -42,6 +35,7 @@ export default function App() {
       </Switch>
 
       <GlobalStyle />
-    </AppWrapper>
+      </div>
+    </div>
   );
 }

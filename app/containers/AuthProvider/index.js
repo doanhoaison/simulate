@@ -23,10 +23,13 @@ const WrapperAuth = (WrappedComponent) => (props) => {
     }
   }, []);
 
-
+  const onLogout = () => {
+    props.setUserInfo(null);
+    return auth.clearUserInfo();
+  }
 
   return (
-    <WrappedComponent {...props} />
+    <WrappedComponent {...props} onLogout={onLogout} />
   );
 }
 
