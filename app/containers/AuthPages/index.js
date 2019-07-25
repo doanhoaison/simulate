@@ -26,7 +26,8 @@ import {
   INITIAL_DATA_REGISTER,
   FORM_TYPE_LOGIN,
   FORM_TYPE_REGISTER,
-  KEY_APP
+  KEY_APP,
+  FORM_TYPE_UPDATE_PROFILE,
 } from "./constants";
 import { eUserType } from "../enums/EUserType";
 import { submit } from "./actions";
@@ -73,7 +74,9 @@ export function AuthPages(props) {
   };
 
   const renderForm = () => {
+    console.log('props.match: ', props.match);
     const { authType } = props.match.params;
+    console.log('authType: ', authType);
 
     switch (authType) {
       case FORM_TYPE_LOGIN:
